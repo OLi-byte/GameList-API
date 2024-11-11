@@ -1,4 +1,4 @@
-package com.olibyte.gamelist;
+package com.olibyte.gamelist.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,7 +13,7 @@ public class Game {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
     private String title;
     @Column(name = "game_year")
     private Integer year;
@@ -26,9 +26,13 @@ public class Game {
     @Column(columnDefinition = "TEXT")
     private String longDescription;
 
+    public Game() {
+
+    }
+
     public Game(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl,
             String shortDescription, String longDescription) {
-        Id = id;
+        this.id = id;
         this.title = title;
         this.year = year;
         this.genre = genre;
@@ -40,11 +44,11 @@ public class Game {
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getTitle() {
@@ -115,7 +119,7 @@ public class Game {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((Id == null) ? 0 : Id.hashCode());
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
         return result;
     }
 
@@ -128,10 +132,10 @@ public class Game {
         if (getClass() != obj.getClass())
             return false;
         Game other = (Game) obj;
-        if (Id == null) {
-            if (other.Id != null)
+        if (id == null) {
+            if (other.id != null)
                 return false;
-        } else if (!Id.equals(other.Id))
+        } else if (!id.equals(other.id))
             return false;
         return true;
     }
